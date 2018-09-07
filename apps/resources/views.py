@@ -84,3 +84,29 @@ def get_resources_cloud(request, id):
             "state": "err"
         }
         return HttpResponse(json.dumps(err))
+
+
+# 素材点击量
+def get_resources_looks(request, id):
+    resources = models.Resources.objects.get(id=int(id))
+    resources.looked_num = resources.looked_num + 1
+    resources.save()
+    # print(resources.looked_num)
+    data = {
+        "looked_num": resources.looked_num,
+        "state": "ok"
+    }
+    return HttpResponse(json.dumps(data))
+
+
+# 素材下载量
+def get_resources_downloads(request, id):
+    resources = models.Resources.objects.get(id=int(id))
+    resources.download_num = resources.download_num + 1
+    resources.save()
+    # print(resources.looked_num)
+    data = {
+        "download_num": resources.download_num,
+        "state": "ok"
+    }
+    return HttpResponse(json.dumps(data))
