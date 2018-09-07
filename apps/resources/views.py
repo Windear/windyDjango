@@ -90,7 +90,7 @@ def get_resources_cloud(request, id):
 def get_resources_looks(request, id):
     resources = models.Resources.objects.get(id=int(id))
     resources.looked_num = resources.looked_num + 1
-    resources.save()
+    models.Resources.objects.filter(id=int(id)).update(looked_num=resources.looked_num)
     # print(resources.looked_num)
     data = {
         "looked_num": resources.looked_num,
@@ -103,7 +103,7 @@ def get_resources_looks(request, id):
 def get_resources_downloads(request, id):
     resources = models.Resources.objects.get(id=int(id))
     resources.download_num = resources.download_num + 1
-    resources.save()
+    models.Resources.objects.filter(id=int(id)).update(download_num=resources.download_num)
     # print(resources.looked_num)
     data = {
         "download_num": resources.download_num,
