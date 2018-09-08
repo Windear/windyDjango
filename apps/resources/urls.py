@@ -15,4 +15,8 @@ urlpatterns = [
     path('looked_num/<int:id>', views.get_resources_looks),
     # 下载量统计
     path('download_num/<int:id>', views.get_resources_downloads),
+    # 返回格式列表
+    path('format', views.get_resources_format),
+    # 获取素材分类列表
+    path('type', views.get_resources_format_list),
 ]

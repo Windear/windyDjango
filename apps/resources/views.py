@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from resources import models
+from django.core import serializers
+from django.db.models import Count
 import json
 
 
@@ -21,12 +23,13 @@ def get_resources_list(request, cate):
         cate_list = models.Resources.objects.order_by("-createtime")
     else:
         cate_list = models.Resources.objects.filter(cate=int(cate)).order_by("-createtime")
+
     resources_data = []
     for list in cate_list:
         data = {
             "resourcesImg": str(list.picture),
             "resourcesTitle": list.title,
-            # "resourcesText": list.introduction,
+            "resourcesType": list.file_type,
             "resourcesId": list.id
         }
         resources_data.append(data)
@@ -84,6 +87,44 @@ def get_resources_cloud(request, id):
             "state": "err"
         }
         return HttpResponse(json.dumps(err))
+
+
+# 获取分类
+def get_resources_format(request):
+    format_list = models.Resources.objects.values_list('file_type', flat=True).annotate(Count('file_type'))
+    data = list(format_list)
+    # print(data)
+    return HttpResponse(json.dumps(data))
+
+
+# 获取所传的分类素材列表
+def get_resources_format_list(request):
+    if request.method == "POST":
+        type = json.loads(request.body)['type']
+        cate = json.loads(request.body)['cate']
+        if cate == 0 or cate == False:
+            format_list = models.Resources.objects.filter(file_type=type).order_by("-createtime")
+        else:
+            format_list = models.Resources.objects.filter(file_type=type,cate=int(cate)).order_by("-createtime")
+
+        resources_data = []
+        for list in format_list:
+            data = {
+                "resourcesImg": str(list.picture),
+                "resourcesTitle": list.title,
+                "resourcesType": list.file_type,
+                "resourcesId": list.id
+            }
+            resources_data.append(data)
+        if resources_data:
+
+            return HttpResponse(json.dumps(resources_data))
+        else:
+            err = {
+                "msg": "没有数据",
+                "state": "err"
+            }
+            return HttpResponse(json.dumps(err))
 
 
 # 素材点击量
