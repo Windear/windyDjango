@@ -8,9 +8,9 @@ import json
 
 
 # Create your views here.
-
+#获取全部设计列表
 def designLists(request):
-    lists = models.Desgin.objects.all()
+    lists = models.Desgin.objects.order_by("-createtime")
     data = serializers.serialize("json", lists)
     return HttpResponse(data)
 
@@ -23,12 +23,10 @@ def get_design_cate(request):
     return HttpResponse(data)
 
 
+
 # 设计列表
 def get_design_list(request):
-    # designListOne = models.Desgin.objects.values_list("cate")
-    # data = serializers.serialize("json", designListOne)
-    # print(designListOne)
-    # Lists = []
+
     catelist = models.Desgin.objects.values_list('cate')
     catelength = set(catelist)
     dslis = []
