@@ -118,21 +118,21 @@ def get_tools_cloud(request, id):
     drive_type、drive_url、drive_pw
     """
     tools_language = models.HistoryVersion.LANGUAGE_TYPE
-    languageData = []
+    languageData = {}
     for one in tools_language:
-        languageData.append({one[0]: one[-1]})
+        languageData.update({one[0]:one[-1]})
     cloud = []
     for item in tools_cloud:
         data = {
             "version":item.version,
-            "language": languageData[0][item.language],
+            "language": languageData[item.language],
             "update_time": json.dumps(item.update_time,cls=CJsonEncoder).split('\"')[1],
              "file_size": item.file_size,
             "drive_type": item.drive_type,
             "drive_url": item.drive_url,
             "drive_pw": item.drive_pw
         }
-        #print(languageData[0]['CH'])
+        #print(languageData['EN'])
         cloud.append(data)
     if cloud:
         return HttpResponse(json.dumps(cloud))
