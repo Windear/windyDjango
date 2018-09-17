@@ -10,7 +10,7 @@ urlpatterns = [
     # 获取素材详情
     path('details/<int:id>', views.get_tools_details),
     # 获取素材详情的下载链接
-    #path('cloud/<int:id>', views.get_resources_cloud),
+    path('download/<int:id>', views.get_tools_cloud),
     # 访问量统计
     path('looked_num/<int:id>', views.get_tools_looks),
     # 下载量统计

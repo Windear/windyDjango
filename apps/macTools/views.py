@@ -2,10 +2,19 @@ from django.shortcuts import render, HttpResponse
 from macTools import models
 from django.core import serializers
 from django.db.models import Count
-import json
+import json,datetime
 
 
 # Create your views here.
+class CJsonEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime.datetime):
+            return obj.strftime('%Y-%m-%d %H:%M:%S')
+        # elif isinstance(obj, date):
+        #     return obj.strftime("%Y-%m-%d")
+        else:
+            return json.JSONEncoder.default(self, obj)
+
 # 工具点击量
 def get_tools_looks(request, id):
     tools = models.Tools.objects.get(id=int(id))
@@ -100,3 +109,36 @@ def get_tools_details(request, id):
         }
         return HttpResponse(json.dumps(err))
     pass
+
+# 获取工具下载链接
+def get_tools_cloud(request, id):
+    tools_cloud = models.HistoryVersion.objects.filter(tools_id=int(id))
+    """
+    version、language、update_time、file_size、
+    drive_type、drive_url、drive_pw
+    """
+    tools_language = models.HistoryVersion.LANGUAGE_TYPE
+    languageData = []
+    for one in tools_language:
+        languageData.append({one[0]: one[-1]})
+    cloud = []
+    for item in tools_cloud:
+        data = {
+            "version":item.version,
+            "language": languageData[0][item.language],
+            "update_time": json.dumps(item.update_time,cls=CJsonEncoder).split('\"')[1],
+             "file_size": item.file_size,
+            "drive_type": item.drive_type,
+            "drive_url": item.drive_url,
+            "drive_pw": item.drive_pw
+        }
+        #print(languageData[0]['CH'])
+        cloud.append(data)
+    if cloud:
+        return HttpResponse(json.dumps(cloud))
+    else:
+        err = {
+            "msg": "没有数据",
+            "state": "err"
+        }
+        return HttpResponse(json.dumps(err))
