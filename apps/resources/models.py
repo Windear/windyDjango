@@ -59,8 +59,8 @@ class Resources(models.Model):
     """
 
     CATEGORY_TYPE = (
-        (1, "UI"), (2, "线性icon"), (3, "彩色icon"), (4, "UI Kit"), (5, "写实"), (6, "插画"), (7, "标志"), (8, "交互"), (9, "报表"),
-        (10, "GIF"), (11, "C4D"),(12,"Mockup")
+        (1, "UI"), (2, "线性icon"), (3, "彩色icon"), (4, "UI Kit"), (5, "写实"), (6, "插画"), (7, "电商"), (8, "交互"), (9, "报表"),
+        (10, "GIF"), (11, "C4D"),(12,"Mockup"),(13,"平面设计")
     )
 
     title = models.CharField(max_length=100, verbose_name="素材标题")
