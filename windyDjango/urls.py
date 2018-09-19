@@ -27,6 +27,7 @@ urlpatterns = [
     path('design/', include('apps.designLists.urls', namespace='designLists')),
     path('resources/', include('apps.resources.urls', namespace='resources')),
     path('tools/', include('apps.macTools.urls', namespace='tools')),
+    path('blog/', include('apps.blog.urls', namespace='blog')),
     # 上传图片
     re_path('^admin/upload/(?P<dir_name>[^/]+)$', upload_image, name='upload_image'),
     re_path("^media/(?P<path>.*)$", serve,

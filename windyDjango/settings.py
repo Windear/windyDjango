@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'apps.designLists',
     'resources',
     'macTools',
+    'blog',
 ]
 
 MIDDLEWARE = [
