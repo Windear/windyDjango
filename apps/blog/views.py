@@ -95,7 +95,7 @@ def get_blog_details(request, id):
                 "articleLookedNum": list.looked_num,
                 "articleContent": list.content,
                 "articleId": list.id,
-                "createTime": json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split('')[0],
+                "createTime": json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split(' ')[0],
                 }
         #print(json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split('')[0])
         details.append(data)
