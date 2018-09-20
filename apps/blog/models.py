@@ -35,6 +35,7 @@ class BlogArticle(models.Model):
        7.is_original 是否原创
        8.content 正文
        9.looked_num 浏览量
+
        10.active 是否激活
        11.create_id
        12.create_time
