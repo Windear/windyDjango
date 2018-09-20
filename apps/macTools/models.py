@@ -88,21 +88,21 @@ class HistoryVersion(models.Model):
     2.language 语言
     3.update_time 更新时间
     4.file_size 文件大小
-    5.drive_type 网盘类型
-    6.drive_url 网盘链接
-    7.drive_pw 网盘密码
+    5.drive_type 系统类型
+    6.drive_url 下载链接
+    7.drive_pw 下载密码
     """
-    CLOUD_TYPE = ((1, "百度网盘"), (2, "360网盘"), (3, "115网盘"))
-    LANGUAGE_TYPE = (("CH", "中文"), ("EN", "英文"))
+    CLOUD_TYPE = ((1, "Mac"), (2, "Microsoft"), (3, "Linux"))
+    LANGUAGE_TYPE = (("CH", "中文"), ("EN", "英文"),("CHEN","中英文"),("MORE","多国语言"))
 
     tools = models.ForeignKey(Tools, on_delete=models.CASCADE, verbose_name="所属工具")
     version = models.CharField(max_length=100, verbose_name="版本")
     language = models.CharField(choices=LANGUAGE_TYPE, max_length=100, verbose_name="语言", help_text="工具语言")
     update_time = models.DateTimeField(blank=True, null=True, verbose_name="更新时间")
     file_size = models.CharField(max_length=100, verbose_name="文件大小")
-    drive_type = models.IntegerField(choices=CLOUD_TYPE, default=1, verbose_name="网盘类型", help_text="网盘类型")
-    drive_url = models.CharField(max_length=100, blank=True, null=True, verbose_name="网盘下载链接")
-    drive_pw = models.CharField(max_length=100, blank=True, null=True, verbose_name="网盘密码")
+    drive_type = models.IntegerField(choices=CLOUD_TYPE, default=1, verbose_name="系统类型", help_text="系统类型")
+    drive_url = models.CharField(max_length=100, blank=True, null=True, verbose_name="下载链接")
+    drive_pw = models.CharField(max_length=100, blank=True, null=True, verbose_name="下载密码")
 
     class Meta:
         verbose_name = "网盘链接"  # 单数数据表可读名称
