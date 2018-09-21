@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'resources',
     'macTools',
     'blog',
+    'DjangoUeditor'
 ]
 
 MIDDLEWARE = [

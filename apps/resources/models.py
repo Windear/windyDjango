@@ -2,7 +2,7 @@ from django.db import models
 # 定义上传文件的名称工具
 from werkzeug.utils import secure_filename
 import os, datetime, uuid
-
+from DjangoUeditor.models import UEditorField
 
 # Create your models here.
 # 自定义 上传图片的保存路径和，图片名称格式。
@@ -69,7 +69,10 @@ class Resources(models.Model):
     copyright = models.CharField(max_length=100, verbose_name="版权")
     picture = models.ImageField('展示图', upload_to=upload_path_handler, max_length=100)
     introduction = models.CharField(max_length=300, blank=True, null=True, verbose_name="素材简介")
-    content = models.TextField()
+    content = UEditorField(u'内容	', width=900, height=600, toolbars="full", imagePath="blogImg/",
+                           filePath="blogFile/",
+                           upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
+                           settings={}, command=None, blank=True, )
     tag = models.CharField(max_length=100, verbose_name="标签")
     download_num = models.IntegerField(default=0, verbose_name="下载次数", help_text="下载次数")
     looked_num = models.IntegerField(default=0, verbose_name="浏览量", help_text="浏览量")

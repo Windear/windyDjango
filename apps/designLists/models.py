@@ -2,6 +2,7 @@ from django.db import models
 # 定义上传文件的名称工具
 from werkzeug.utils import secure_filename
 import os, datetime, uuid
+from DjangoUeditor.models import UEditorField
 
 
 class Desgin(models.Model):
@@ -51,7 +52,10 @@ class Desgin(models.Model):
     copyright = models.CharField(max_length=100, verbose_name="版权")
     picture = models.ImageField('展示图', upload_to=upload_path_handler, max_length=100)
     introduction = models.CharField(max_length=300, blank=True, null=True, verbose_name="设计简介")
-    content = models.TextField()
+    content = UEditorField(u'内容	', width=900, height=600, toolbars="full", imagePath="blogImg/",
+                           filePath="blogFile/",
+                           upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
+                           settings={}, command=None, blank=True, )
     createman = models.CharField(max_length=100, verbose_name="创建人")
     createtime = models.DateTimeField(auto_now=True, verbose_name="创建时间")
     updateman = models.CharField(max_length=100, blank=True, null=True, verbose_name="修改人")

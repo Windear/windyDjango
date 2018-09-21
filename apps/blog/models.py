@@ -1,5 +1,6 @@
 from django.db import models
 import os, datetime, uuid
+from DjangoUeditor.models import UEditorField
 
 
 # Create your models here.
@@ -57,7 +58,12 @@ class BlogArticle(models.Model):
     tag = models.CharField(max_length=300, verbose_name="标签")
     author = models.CharField(max_length=100, verbose_name="作者")
     is_original = models.IntegerField(choices=IS_ORIGINAL, default=1, verbose_name="是否原创", help_text="是否原创")
-    content = models.TextField()
+
+    content = UEditorField(u'内容	', width=900, height=600, toolbars="full", imagePath="blogImg/",
+                           filePath="blogFile/",
+                           upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
+                           settings={}, command=None, blank=True, )
+
     looked_num = models.IntegerField(default=0, verbose_name="浏览量", help_text="浏览量")
 
     active = models.BooleanField(default=True, verbose_name="是否显示", help_text="是否显示")
@@ -67,7 +73,6 @@ class BlogArticle(models.Model):
     edit_time = models.DateTimeField(blank=True, null=True, verbose_name="修改时间")
     delete_id = models.CharField(max_length=100, blank=True, null=True, verbose_name="删除人")
     delete_time = models.DateTimeField(blank=True, null=True, verbose_name="删除时间")
-
 
     class Meta:
         verbose_name = "文章详情"  # 单数数据表可读名称

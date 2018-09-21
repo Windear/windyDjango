@@ -1,6 +1,6 @@
 from django.db import models
 import os, datetime, uuid
-
+from DjangoUeditor.models import UEditorField
 
 # Create your models here.
 
@@ -61,7 +61,10 @@ class Tools(models.Model):
     cate = models.IntegerField(choices=CATEGORY_TYPE, verbose_name="工具类别", help_text="工具类别")
     tag = models.CharField(max_length=300, verbose_name="标签")
     introduction = models.CharField(max_length=300, blank=True, null=True, verbose_name="工具简介")
-    content = models.TextField()
+    content = UEditorField(u'内容	', width=900, height=600, toolbars="full", imagePath="blogImg/",
+                           filePath="blogFile/",
+                           upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
+                           settings={}, command=None, blank=True, )
     download_num = models.IntegerField(default=0, verbose_name="下载次数", help_text="下载次数")
     looked_num = models.IntegerField(default=0, verbose_name="浏览量", help_text="浏览量")
 
