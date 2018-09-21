@@ -71,7 +71,7 @@ class Resources(models.Model):
     introduction = models.CharField(max_length=300, blank=True, null=True, verbose_name="素材简介")
     content = UEditorField(u'内容	', width=900, height=600, toolbars="full", imagePath="blogImg/",
                            filePath="blogFile/",
-                           upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
+                           upload_settings={"imageMaxSize": 1204000,"catcherPathFormat": "blogImg/"},
                            settings={}, command=None, blank=True, )
     tag = models.CharField(max_length=100, verbose_name="标签")
     download_num = models.IntegerField(default=0, verbose_name="下载次数", help_text="下载次数")
