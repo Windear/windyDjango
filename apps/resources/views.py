@@ -161,3 +161,25 @@ def get_resources_downloads(request, id):
         "state": "ok"
     }
     return HttpResponse(json.dumps(data))
+
+
+#最新素材8条
+def get_new_resources(request):
+    cate_list = models.Resources.objects.order_by("-createtime")[:8]
+    resources_data = []
+    for list in cate_list:
+        data = {
+            "resourcesImg": str(list.picture),
+            "resourcesTitle": list.title,
+            "resourcesType": list.file_type,
+            "resourcesId": list.id
+        }
+        resources_data.append(data)
+    if resources_data:
+        return HttpResponse(json.dumps(resources_data))
+    else:
+        err = {
+            "msg": "没有数据",
+            "state": "err"
+        }
+        return HttpResponse(json.dumps(err))

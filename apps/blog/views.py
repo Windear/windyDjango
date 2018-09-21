@@ -97,7 +97,7 @@ def get_blog_details(request, id):
                 "articleId": list.id,
                 "createTime": json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split(' ')[0],
                 }
-        #print(json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split('')[0])
+        # print(json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split('')[0])
         details.append(data)
         # print(details)
     if details:
@@ -109,3 +109,33 @@ def get_blog_details(request, id):
         }
         return HttpResponse(json.dumps(err))
     pass
+
+
+# 获取最近三条文章
+def get_new_blog(request):
+    tools_list = models.BlogArticle.objects.order_by("-create_time")[:5]
+    article_data = []
+    article_cate = models.BlogArticle.CATEGORY_TYPE
+    article_original = models.BlogArticle.IS_ORIGINAL
+    for list in tools_list:
+        data = {
+            "articlePicture": str(list.picture),
+            "articleTitle": list.title,
+            "articleIntroduction": list.introduction,
+            "articleTag": list.tag,
+            "articleCate": article_cate[list.cate - 1],
+            "articleAuthor": list.author,
+            "articleOriginal": article_original[list.is_original - 1],
+            "articleLookedNum": list.looked_num,
+            "articleId": list.id,
+            "createTime": json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split(' ')[0],
+        }
+        article_data.append(data)
+    if article_data:
+        return HttpResponse(json.dumps(article_data))
+    else:
+        err = {
+            "msg": "没有数据",
+            "state": "err"
+        }
+        return HttpResponse(json.dumps(err))

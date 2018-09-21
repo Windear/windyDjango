@@ -63,12 +63,12 @@ def get_tools_allList(request, cate):
     tools_data = []
     tools_cate = models.Tools.CATEGORY_TYPE
     for list in tools_list:
-        tools_version = models.HistoryVersion.objects.filter(tools_id = list.id)
+        tools_version = models.HistoryVersion.objects.filter(tools_id=list.id)
         tools_sys = []
         for item in tools_version:
             if item.drive_type not in tools_sys:
                 tools_sys.append(item.drive_type)
-        #print(tools_sys)
+        # print(tools_sys)
         data = {
             "toolsIcon": str(list.icon),
             "toolsTitle": list.title,
@@ -145,6 +145,37 @@ def get_tools_cloud(request, id):
         cloud.append(data)
     if cloud:
         return HttpResponse(json.dumps(cloud))
+    else:
+        err = {
+            "msg": "没有数据",
+            "state": "err"
+        }
+        return HttpResponse(json.dumps(err))
+
+
+# 获取最近6条工具信息
+def get_new_tools(request):
+    tools_list = models.Tools.objects.order_by("-create_time")[:6]
+    tools_data = []
+    tools_cate = models.Tools.CATEGORY_TYPE
+    for list in tools_list:
+        tools_version = models.HistoryVersion.objects.filter(tools_id=list.id)
+        tools_sys = []
+        for item in tools_version:
+            if item.drive_type not in tools_sys:
+                tools_sys.append(item.drive_type)
+        # print(tools_sys)
+        data = {
+            "toolsIcon": str(list.icon),
+            "toolsTitle": list.title,
+            "toolsIntroduction": list.introduction,
+            "toolsCate": tools_cate[list.cate - 1],
+            "toolsId": list.id,
+            "toolsSys": tools_sys
+        }
+        tools_data.append(data)
+    if tools_data:
+        return HttpResponse(json.dumps(tools_data))
     else:
         err = {
             "msg": "没有数据",

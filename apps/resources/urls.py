@@ -19,4 +19,6 @@ urlpatterns = [
     path('format', views.get_resources_format),
     # 获取素材分类列表
     path('type', views.get_resources_format_list),
+    # 获取最近8条素材
+    path('new', views.get_new_resources),
 ]

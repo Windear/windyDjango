@@ -15,4 +15,6 @@ urlpatterns = [
     path('looked_num/<int:id>', views.get_blog_looks),
     # 下载量统计
     #path('download_num/<int:id>', views.get_tools_downloads),
+    # 获取最近5条文章
+    path('new', views.get_new_blog),
 ]
