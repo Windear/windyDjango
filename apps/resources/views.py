@@ -91,10 +91,19 @@ def get_resources_cloud(request, id):
 
 # 获取分类
 def get_resources_format(request):
+    # format_list = models.Resources.objects.values_list('file_type', flat=True).annotate(Count('file_type'))
     format_list = models.Resources.objects.values_list('file_type', flat=True).annotate(Count('file_type'))
     data = list(format_list)
-    # print(data)
-    return HttpResponse(json.dumps(data))
+    format_newlist = []
+    for items in data:
+        items = items.split(',')
+        for item in items:
+            if item not in format_newlist:
+                format_newlist.append(item)
+    # format_newlist = data
+    # data = list(format_list)
+    #print(format_newlist)
+    return HttpResponse(json.dumps(format_newlist))
 
 
 # 获取所传的分类素材列表
@@ -103,9 +112,10 @@ def get_resources_format_list(request):
         type = json.loads(request.body)['type']
         cate = json.loads(request.body)['cate']
         if cate == 0 or cate == False:
-            format_list = models.Resources.objects.filter(file_type=type).order_by("-createtime")
+            format_list = models.Resources.objects.filter(file_type__icontains=type).order_by("-createtime")
         else:
-            format_list = models.Resources.objects.filter(file_type=type,cate=int(cate)).order_by("-createtime")
+            format_list = models.Resources.objects.filter(file_type__icontains=type, cate=int(cate)).order_by(
+                "-createtime")
 
         resources_data = []
         for list in format_list:
@@ -117,7 +127,7 @@ def get_resources_format_list(request):
             }
             resources_data.append(data)
         if resources_data:
-
+            print(resources_data)
             return HttpResponse(json.dumps(resources_data))
         else:
             err = {
