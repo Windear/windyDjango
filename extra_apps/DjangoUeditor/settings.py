@@ -116,13 +116,13 @@ UEditorUploadSettings = {
     "scrawlActionName": "uploadscrawl",  # 执行上传涂鸦的action名称 */
     "scrawlFieldName": "upfile",  # 提交的图片表单名称 */
     "scrawlMaxSize": 10485760,  # 上传大小限制，单位B  10M
-    "scrawlUrlPrefix": "",
+    "scrawlUrlPrefix": "http://5windy.com:5001",
     "scrawlPathFormat": "",
 
     # 截图工具上传 */
     "snapscreenActionName": "uploadimage",  # 执行上传截图的action名称 */
     "snapscreenPathFormat": "",
-    "snapscreenUrlPrefix": "",
+    "snapscreenUrlPrefix": "http://5windy.com:5001",
 
     # 抓取远程图片配置 */
     "catcherLocalDomain": ["127.0.0.1", "localhost", "img.baidu.com"],
@@ -132,13 +132,13 @@ UEditorUploadSettings = {
     "catcherMaxSize": 10485760,  # 上传大小限制，单位B */
     # 抓取图片格式显示 */
     "catcherAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
-    "catcherUrlPrefix": "",
+    "catcherUrlPrefix": "http://5windy.com:5001",
     # 上传视频配置 */
     "videoActionName": "uploadvideo",  # 执行上传视频的action名称 */
     "videoPathFormat": "",
     "videoFieldName": "upfile",  # 提交的视频表单名称 */
     "videoMaxSize": 102400000,  # 上传大小限制，单位B，默认100MB */
-    "videoUrlPrefix": "",
+    "videoUrlPrefix": "http://5windy.com:5001",
     "videoAllowFiles": [
         ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
         ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid"],  # 上传视频格式显示 */
@@ -148,7 +148,7 @@ UEditorUploadSettings = {
     "filePathFormat": "",
     "fileFieldName": "upfile",  # 提交的文件表单名称 */
     "fileMaxSize": 204800000,  # 上传大小限制，单位B，200MB */
-    "fileUrlPrefix": "",  # 文件访问路径前缀 */
+    "fileUrlPrefix": "http://5windy.com:5001",  # 文件访问路径前缀 */
     "fileAllowFiles": [
         ".png", ".jpg", ".jpeg", ".gif", ".bmp",
         ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
@@ -163,12 +163,12 @@ UEditorUploadSettings = {
     "imageManagerListSize": 30,  # 每次列出文件数量 */
     # 列出的文件类型 */
     "imageManagerAllowFiles": [".png", ".jpg", ".jpeg", ".gif", ".bmp"],
-    "imageManagerUrlPrefix": "",  # 图片访问路径前缀 */
+    "imageManagerUrlPrefix": "http://5windy.com:5001",  # 图片访问路径前缀 */
 
     # 列出指定目录下的文件 */
     "fileManagerActionName": "listfile",  # 执行文件管理的action名称 */
     "fileManagerListPath": "",
-    "fileManagerUrlPrefix": "",
+    "fileManagerUrlPrefix": "http://5windy.com:5001",
     "fileManagerListSize": 30,  # 每次列出文件数量 */
     "fileManagerAllowFiles": [
         ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tif", ".psd"
