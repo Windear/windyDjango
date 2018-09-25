@@ -3,6 +3,7 @@ from blog import models
 from django.core import serializers
 from django.db.models import Count
 import json, datetime
+import hashlib
 
 
 # Create your views here.
@@ -14,6 +15,14 @@ class CJsonEncoder(json.JSONEncoder):
         #     return obj.strftime("%Y-%m-%d")
         else:
             return json.JSONEncoder.default(self, obj)
+
+#哈希加密
+class Hashmd5():
+    def md5(val):
+        md5 = hashlib.md5()
+        md5.update(val.encode('utf-8'))
+        print(val)
+        return md5.hexdigest()
 
 
 # 文章点击量
@@ -96,6 +105,7 @@ def get_blog_details(request, id):
                 "articleContent": list.content,
                 "articleId": list.id,
                 "createTime": json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split(' ')[0],
+                "sid": Hashmd5.md5(str(list.id) + '.' + list.title)
                 }
         # print(json.dumps(list.create_time, cls=CJsonEncoder).split('\"')[1].split('')[0])
         details.append(data)

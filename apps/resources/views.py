@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from resources import models
 from django.core import serializers
 from django.db.models import Count
-import json
+import json, hashlib
 
 
 # Create your views here.
@@ -15,6 +15,15 @@ def get_resources_cate(request):
     # print(dicData)
     data = json.dumps(dic_data)
     return HttpResponse(data)
+
+
+# 哈希加密
+class Hashmd5():
+    def md5(val):
+        md5 = hashlib.md5()
+        md5.update(val.encode('utf-8'))
+        print(val)
+        return md5.hexdigest()
 
 
 # 获取素材列表
@@ -55,7 +64,8 @@ def get_resources_details(request, id):
         data = {"resourcesPic": str(item.picture), "resourcesTitle": item.title,
                 "resourcesCopyright": item.copyright, "resourcesDetail": item.content,
                 "resourcesTag": item.tag,
-                "resourcesDownload": str(item.download_address)}
+                "resourcesDownload": str(item.download_address),
+                "sid": Hashmd5.md5(str(item.id) + '.' + item.title)}
         details.append(data)
         # print(details)
     if details:
@@ -102,7 +112,7 @@ def get_resources_format(request):
                 format_newlist.append(item)
     # format_newlist = data
     # data = list(format_list)
-    #print(format_newlist)
+    # print(format_newlist)
     return HttpResponse(json.dumps(format_newlist))
 
 
@@ -163,7 +173,7 @@ def get_resources_downloads(request, id):
     return HttpResponse(json.dumps(data))
 
 
-#最新素材8条
+# 最新素材8条
 def get_new_resources(request):
     cate_list = models.Resources.objects.order_by("-createtime")[:8]
     resources_data = []

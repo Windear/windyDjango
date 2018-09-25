@@ -4,11 +4,20 @@ from django.core import serializers
 
 from werkzeug.security import generate_password_hash
 from designLists import models
-import json
+import json, hashlib
 
 
 # Create your views here.
-#获取全部设计列表
+# 哈希加密
+class Hashmd5():
+    def md5(val):
+        md5 = hashlib.md5()
+        md5.update(val.encode('utf-8'))
+        print(val)
+        return md5.hexdigest()
+
+
+# 获取全部设计列表
 def designLists(request):
     lists = models.Desgin.objects.order_by("-createtime")
     data = serializers.serialize("json", lists)
@@ -23,10 +32,8 @@ def get_design_cate(request):
     return HttpResponse(data)
 
 
-
 # 设计列表
 def get_design_list(request):
-
     catelist = models.Desgin.objects.values_list('cate')
     catelength = set(catelist)
     dslis = []
@@ -78,7 +85,8 @@ def get_design_detail(request, id):
     design_detal = models.Desgin.objects.get(id=int(id))
     dedata = {"projectPic": str(design_detal.picture), "projectTitle": design_detal.title,
               "projectDate": design_detal.dgndatetime, "projectCopyright": design_detal.copyright,
-              "projectSynopsis": design_detal.introduction, "projectDetail": design_detal.content}
+              "projectSynopsis": design_detal.introduction, "projectDetail": design_detal.content,
+              "sid": Hashmd5.md5(str(design_detal.id) + '.' + design_detal.title)}
     data = json.dumps(dedata)
     return HttpResponse(data)
 
@@ -86,7 +94,7 @@ def get_design_detail(request, id):
 # 首页项目案例列表
 def get_case_list(request):
     case_list = []
-    caseId = [1, 2, 3, 6,7,9, 10, 23,17, 28, 20, 14]
+    caseId = [1, 2, 3, 6, 7, 9, 10, 23, 17, 28, 20, 14]
     for i in caseId:
         case = models.Desgin.objects.get(id=int(i))
         caseData = {
@@ -96,6 +104,6 @@ def get_case_list(request):
             "caseDate": case.dgndatetime
         }
         case_list.append(caseData)
-    #print(case_list)
+    # print(case_list)
     data = json.dumps(case_list)
     return HttpResponse(data)

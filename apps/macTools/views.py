@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse
 from macTools import models
 from django.core import serializers
 from django.db.models import Count
-import json, datetime
+import json, datetime, hashlib
 
 
 # Create your views here.
@@ -14,6 +14,15 @@ class CJsonEncoder(json.JSONEncoder):
         #     return obj.strftime("%Y-%m-%d")
         else:
             return json.JSONEncoder.default(self, obj)
+
+
+# 哈希加密
+class Hashmd5():
+    def md5(val):
+        md5 = hashlib.md5()
+        md5.update(val.encode('utf-8'))
+        print(val)
+        return md5.hexdigest()
 
 
 # 工具点击量
@@ -104,6 +113,7 @@ def get_tools_details(request, id):
                 "toolsNewVersion": item.new_version,
                 "toolsContent": item.content, "toolsLookedNum": item.looked_num,
                 "toolsDownloadNum": item.download_num,
+                "sid":Hashmd5.md5(str(item.id) + '.' + item.title)
                 # "toolsDownCreateTime": item.create_time,
                 }
         details.append(data)
