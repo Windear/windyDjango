@@ -125,6 +125,7 @@ UEditorUploadSettings = {
     "snapscreenUrlPrefix": "http://5windy.com:5001",
 
     # 抓取远程图片配置 */
+    "catchRemoteImageEnable": False,
     "catcherLocalDomain": ["127.0.0.1", "localhost", "img.baidu.com"],
     "catcherPathFormat": "",
     "catcherActionName": "catchimage",  # 执行抓取远程图片的action名称 */
@@ -172,7 +173,8 @@ UEditorUploadSettings = {
     "fileManagerListSize": 30,  # 每次列出文件数量 */
     "fileManagerAllowFiles": [
         ".png", ".jpg", ".jpeg", ".gif", ".bmp", ".tif", ".psd"
-        ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
+                                                         ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg",
+        ".mpg",
         ".ogg", ".ogv", ".mov", ".wmv", ".mp4", ".webm", ".mp3", ".wav", ".mid",
         ".rar", ".zip", ".tar", ".gz", ".7z", ".bz2", ".cab", ".iso",
         ".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf", ".txt", ".md", ".xml",

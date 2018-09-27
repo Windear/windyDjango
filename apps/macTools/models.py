@@ -50,7 +50,7 @@ class Tools(models.Model):
     """
 
     CATEGORY_TYPE = (
-        (1, "应用软件"), (2, "媒体工具"), (3, "网络工具"), (4, "开发工具"), (5, "设计工具"), (6, "行业软件"), (7, "安全防护"), (8, "系统工具"),
+        (1, "应用软件"), (2, "Sketch插件"), (3, "网络工具"), (4, "开发工具"), (5, "设计工具"), (6, "行业软件"), (7, "安全防护"), (8, "系统工具"),
         (9, "免费精品"),
         (10, "其他")
     )
@@ -104,7 +104,7 @@ class HistoryVersion(models.Model):
     update_time = models.DateTimeField(blank=True, null=True, verbose_name="更新时间")
     file_size = models.CharField(max_length=100, verbose_name="文件大小")
     drive_type = models.IntegerField(choices=CLOUD_TYPE, default=1, verbose_name="系统类型", help_text="系统类型")
-    drive_url = models.CharField(max_length=100, blank=True, null=True, verbose_name="下载链接")
+    drive_url = models.CharField(max_length=500, blank=True, null=True, verbose_name="下载链接")
     drive_pw = models.CharField(max_length=100, blank=True, null=True, verbose_name="下载密码")
 
     class Meta:

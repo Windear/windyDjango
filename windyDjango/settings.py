@@ -34,6 +34,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    #'werkzeug_debugger_runserver',
+    #'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,6 +49,8 @@ INSTALLED_APPS = [
     'blog',
     'DjangoUeditor'
 ]
+
+#SECURE_SSL_REDIRECT = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -63,7 +67,7 @@ ROOT_URLCONF = 'windyDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # 'DIRS': [os.path.join(BASE_DIR, 'templates/dist')],
+      # 'DIRS': [os.path.join(BASE_DIR, 'templates/dist')],
         'DIRS': ['templates/dist'],
 
         'APP_DIRS': True,
