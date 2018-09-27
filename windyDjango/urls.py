@@ -20,8 +20,15 @@ from django.conf import settings
 from django.views.static import serve
 from designLists.uploads import upload_image
 
+from rest_framework.documentation import include_docs_urls
+
 urlpatterns = [
     path('', TemplateView.as_view(template_name="index.html")),
+
+    # dfw配置
+    re_path(r'^api-auth/', include('rest_framework.urls')),
+    # dfw文档
+    path('docs/', include_docs_urls(title='有爱设计API文档')),
     path('admin/', admin.site.urls),
     path('users/', include('apps.users.urls', namespace='users')),
     path('design/', include('apps.designLists.urls', namespace='designLists')),

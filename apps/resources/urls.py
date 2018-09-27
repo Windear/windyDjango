@@ -1,5 +1,6 @@
 from django.urls import path, re_path
 from . import views
+from resources.views_base import ResourcesList
 
 app_name = 'resources'
 urlpatterns = [
@@ -21,4 +22,7 @@ urlpatterns = [
     path('type', views.get_resources_format_list),
     # 获取最近8条素材
     path('new', views.get_new_resources),
+
+    #DFW素材列表
+    path('dfwcate', ResourcesList.as_view(),name="resources_list"),
 ]
