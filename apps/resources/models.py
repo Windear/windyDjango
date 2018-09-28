@@ -79,6 +79,7 @@ class Resources(models.Model):
     file_type = models.CharField(max_length=100, verbose_name="文件类型", default="sketch")
     download_address = models.FileField(upload_to=upload_resource, max_length=100, verbose_name="下载链接")
 
+
     active = models.BooleanField(default=True, verbose_name="是否显示", help_text="是否显示")
     createman = models.CharField(max_length=100, verbose_name="创建人")
     createtime = models.DateTimeField(auto_now=True, verbose_name="创建时间")
@@ -104,7 +105,7 @@ class CloudDrive(models.Model):
     4.网盘密码 drive_pw
     """
     CLOUD_TYPE = ((1, "百度网盘"), (2, "360网盘"), (3, "115网盘"))
-    resources = models.ForeignKey(Resources, on_delete=models.CASCADE, verbose_name="所属素材")
+    resources = models.ForeignKey(Resources, related_name='cloud_drive', on_delete=models.CASCADE, verbose_name="所属素材")
     drive_type = models.IntegerField(choices=CLOUD_TYPE, default=1, verbose_name="网盘类型", help_text="网盘类型")
     drive_url = models.CharField(max_length=500, blank=True, null=True, verbose_name="网盘下载链接")
     drive_pw = models.CharField(max_length=100, blank=True, null=True, verbose_name="网盘密码")

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     #'werkzeug_debugger_runserver',
     #'django_extensions',
     'rest_framework',
+    'django_filters',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

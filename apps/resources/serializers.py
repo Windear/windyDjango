@@ -1,8 +1,16 @@
 from rest_framework import serializers
-#from .models import Resources, CATEGORY_TYPE
+from .models import Resources, CloudDrive
 
 
-class ResourcesSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    title = serializers.CharField(required=True, allow_blank=True, max_length=100)
-    #cate = serializers.IntegerField(choices=CATEGORY_TYPE)
+class CloudDriveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CloudDrive
+        fields = '__all__'
+
+
+class ResourcesSerializer(serializers.ModelSerializer):
+    # cloud_drive = CloudDriveSerializer(many=True)
+
+    class Meta:
+        model = Resources
+        fields = ('id', 'picture', 'title', 'file_type')

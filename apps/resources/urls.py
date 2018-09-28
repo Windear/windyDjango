@@ -1,6 +1,12 @@
-from django.urls import path, re_path
+from django.urls import path, include, re_path
 from . import views
-from resources.views_base import ResourcesList
+from resources.views_base import ResourcesListViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+# 配置resource的URL
+router.register(r'search_resources', ResourcesListViewSet)
 
 app_name = 'resources'
 urlpatterns = [
@@ -23,6 +29,6 @@ urlpatterns = [
     # 获取最近8条素材
     path('new', views.get_new_resources),
 
-    #DFW素材列表
-    path('dfwcate', ResourcesList.as_view(),name="resources_list"),
+    # DFW素材列表
+    path('', include(router.urls))
 ]
