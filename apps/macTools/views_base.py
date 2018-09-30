@@ -1,5 +1,5 @@
-from .models import Resources
-from .serializers import ResourcesSerializer
+from .models import Tools
+from .serializers import ToolsSerializer
 from rest_framework import mixins
 from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
@@ -8,7 +8,7 @@ from rest_framework import filters
 
 
 # 分页配置
-class ResourcesPagination(PageNumberPagination):
+class ToolsPagination(PageNumberPagination):
     page_size = 24
     page_size_query_param = 'page_size'
     page_query_param = 'p'
@@ -16,15 +16,15 @@ class ResourcesPagination(PageNumberPagination):
 
 
 # 返回接口
-class ResourcesListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
+class ToolsListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     素材列表页，模糊搜索功能
     """
-    queryset = Resources.objects.all().order_by("-createtime")
+    queryset = Tools.objects.all().order_by("-create_time")
     # 返回序列化数据
-    serializer_class = ResourcesSerializer
+    serializer_class = ToolsSerializer
     # 分页配置
-    pagination_class = ResourcesPagination
+    pagination_class = ToolsPagination
     # 模糊查询
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
-    search_fields = ('title', 'introduction', 'tag','file_type')
+    search_fields = ('title', 'introduction', 'tag')

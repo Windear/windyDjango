@@ -98,7 +98,7 @@ class HistoryVersion(models.Model):
     CLOUD_TYPE = ((1, "Mac"), (2, "Microsoft"), (3, "Linux"))
     LANGUAGE_TYPE = (("CH", "中文"), ("EN", "英文"),("CHEN","中英文"),("MORE","多国语言"))
 
-    tools = models.ForeignKey(Tools, on_delete=models.CASCADE, verbose_name="所属工具")
+    tools = models.ForeignKey(Tools, on_delete=models.CASCADE,related_name='tools_sys', verbose_name="所属工具")
     version = models.CharField(max_length=100, verbose_name="版本")
     language = models.CharField(choices=LANGUAGE_TYPE, max_length=100, verbose_name="语言", help_text="工具语言")
     update_time = models.DateTimeField(blank=True, null=True, verbose_name="更新时间")

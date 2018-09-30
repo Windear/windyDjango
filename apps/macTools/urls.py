@@ -1,7 +1,15 @@
-from django.urls import path, re_path
+from django.urls import path, include
 from . import views
+from macTools.views_base import ToolsListViewSet
+from rest_framework.routers import DefaultRouter
 
 app_name = 'tools'
+
+router = DefaultRouter()
+
+# 配置resource的URL
+router.register(r'search_tools', ToolsListViewSet)
+
 urlpatterns = [
     # 获取所有工具类别
     path('cate', views.get_tools_cate),
@@ -18,4 +26,6 @@ urlpatterns = [
     # 获取最近6条工具列表
     path('new', views.get_new_tools),
 
+    # DFW工具列表
+    path('', include(router.urls))
 ]
