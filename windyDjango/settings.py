@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'resources',
     'macTools',
     'blog',
+    'myLinks',
     'DjangoUeditor'
 ]
 
