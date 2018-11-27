@@ -19,7 +19,7 @@ class Hashmd5():
 
 # 获取全部设计列表
 def designLists(request):
-    lists = models.Desgin.objects.order_by("-dgndatetime")
+    lists = models.Desgin.objects.order_by("-createtime")
     data = serializers.serialize("json", lists)
     return HttpResponse(data)
 
