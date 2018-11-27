@@ -17,6 +17,7 @@ class Desgin(models.Model):
     7. 封面
     8.简介
     9.内容
+    9.1 新增字段 active
     10.发布人
     11.发布时间
     12.修改人
@@ -26,6 +27,10 @@ class Desgin(models.Model):
     """
     CATEGORY_TYPE = (
         (1, "UI设计"), (2, "插画/原画"), (3, "平面设计"), (4, "3D设计"), (5, "动效设计")
+    )
+
+    SHOW_TYPE = (
+        (0,"显示"),(1,"隐藏")
     )
 
     # 自定义 上传图片的保存路径和，图片名称格式。
@@ -56,6 +61,9 @@ class Desgin(models.Model):
                            filePath="blogFile/",
                            upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
                            settings={}, command=None, blank=True, )
+
+    active = models.IntegerField(default=0,choices=SHOW_TYPE,blank=True,verbose_name="是否显示", help_text="是否显示")
+
     createman = models.CharField(max_length=100, verbose_name="创建人")
     createtime = models.DateTimeField(auto_now=True, verbose_name="创建时间")
     updateman = models.CharField(max_length=100, blank=True, null=True, verbose_name="修改人")
@@ -64,7 +72,6 @@ class Desgin(models.Model):
     deletetime = models.DateTimeField(blank=True, null=True, verbose_name="删除时间")
 
     class Meta:
-        managed = False
         db_table = 'desgin'
         verbose_name = "设计列表"  # 单数数据表可读名称
         verbose_name_plural = "设计列表"  # 复数数据表可读名称

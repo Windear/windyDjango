@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.users',
     'apps.designLists',
+    'myDesign',
     'resources',
     'macTools',
     'blog',
@@ -97,15 +98,17 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'windyPages',
+        'NAME': 'UIDesign',
         'USER': 'root',
-        'PASSWORD': '891006',
-        'HOST': '47.95.203.96',
-        'PORT': '3306',
+        'PASSWORD': 'root',
+        'HOST': 'localhost',
+        'PORT': '8889',
         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
     }
 
 }
+
+DATABASES['default']['OPTIONS']['init_command'] = "SET sql_mode='STRICT_TRANS_TABLES'"#排除错误
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
