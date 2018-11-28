@@ -4,7 +4,7 @@ from designLists.models import Desgin
 
 
 # Register your models here.
-@admin.register(Desgin)
+# @admin.register(Desgin)
 class DesignAdmin(admin.ModelAdmin):
     # listdisplay设置要显示在列表中的字段（id字段是Django模型的默认主键）
     list_display = ('id', 'title')

@@ -17,7 +17,6 @@ class Desgin(models.Model):
     7. 封面
     8.简介
     9.内容
-    9.1 新增字段 active
     10.发布人
     11.发布时间
     12.修改人
@@ -30,7 +29,7 @@ class Desgin(models.Model):
     )
 
     SHOW_TYPE = (
-        (0,"显示"),(1,"隐藏")
+        (0, "显示"), (1, "隐藏")
     )
 
     # 自定义 上传图片的保存路径和，图片名称格式。
@@ -62,7 +61,7 @@ class Desgin(models.Model):
                            upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
                            settings={}, command=None, blank=True, )
 
-    active = models.IntegerField(default=0,choices=SHOW_TYPE,blank=True,verbose_name="是否显示", help_text="是否显示")
+    active = models.IntegerField(default=0, choices=SHOW_TYPE, blank=True, verbose_name="是否显示", help_text="是否显示")
 
     createman = models.CharField(max_length=100, verbose_name="创建人")
     createtime = models.DateTimeField(auto_now=True, verbose_name="创建时间")

@@ -98,17 +98,15 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'UIDesign',
+        'NAME': 'windyPages',
         'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '8889',
+        'PASSWORD': '891006',
+        'HOST': '47.95.203.96',
+        'PORT': '3306',
         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
     }
 
 }
-
-DATABASES['default']['OPTIONS']['init_command'] = "SET sql_mode='STRICT_TRANS_TABLES'"#排除错误
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

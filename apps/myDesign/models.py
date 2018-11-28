@@ -55,7 +55,7 @@ class DesignWorks(models.Model):
     dgndatetime = models.CharField(blank=True, max_length=100, null=True, verbose_name="设计时间")
     author = models.CharField(max_length=100, verbose_name="作者")
     copyright = models.CharField(max_length=100, verbose_name="版权")
-    picture = models.ImageField('展示图', upload_to=upload_path_handler, max_length=100)
+    picture = models.ImageField('展示图', upload_to=upload_path_handler, max_length=300)
     introduction = models.CharField(max_length=300, blank=True, null=True, verbose_name="设计简介")
     content = UEditorField(u'内容	', width=900, height=600, toolbars="full", imagePath="blogImg/",
                            filePath="blogFile/",
