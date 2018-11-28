@@ -104,7 +104,7 @@ class CloudDrive(models.Model):
     3.网盘下载链接 drive_url
     4.网盘密码 drive_pw
     """
-    CLOUD_TYPE = ((1, "百度网盘"), (2, "360网盘"), (3, "115网盘"))
+    CLOUD_TYPE = ((1, "百度网盘"), (2, "腾讯云"), (3, "其他网盘"))
     resources = models.ForeignKey(Resources, related_name='cloud_drive', on_delete=models.CASCADE, verbose_name="所属素材")
     drive_type = models.IntegerField(choices=CLOUD_TYPE, default=1, verbose_name="网盘类型", help_text="网盘类型")
     drive_url = models.CharField(max_length=500, blank=True, null=True, verbose_name="网盘下载链接")
