@@ -1,19 +1,20 @@
 from django.urls import path, include, re_path
 from . import views
-from resources.views_base import ResourcesListViewSet
+from resources.views_base import ResourcesListViewSet,ResourcesListView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
 # 配置resource的URL
 router.register(r'search_resources', ResourcesListViewSet)
+router.register(r'list', ResourcesListView)
 
 app_name = 'resources'
 urlpatterns = [
     # 所有类别
     path('cate', views.get_resources_cate),
     # 获取素材列表
-    path('list/<int:cate>', views.get_resources_list),
+    # path('list/<int:cate>', views.get_resources_list),
     # 获取素材详情
     path('details/<int:id>', views.get_resources_details),
     # 获取素材详情的下载链接

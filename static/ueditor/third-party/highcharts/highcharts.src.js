@@ -1508,7 +1508,7 @@ defaultOptions = {
 	},
 	global: {
 		useUTC: true,
-		canvasToolsURL: 'http://code.highcharts.com/3.0.6/modules/canvas-macTools.js',
+		canvasToolsURL: 'http://code.highcharts.com/3.0.6/modules/canvas-tools.js',
 		VMLRadialGradientURL: 'http://code.highcharts.com/3.0.6/gfx/vml-radial-gradient.png'
 	},
 	chart: {

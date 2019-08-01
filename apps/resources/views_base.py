@@ -27,4 +27,18 @@ class ResourcesListViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     pagination_class = ResourcesPagination
     # 模糊查询
     filter_backends = (DjangoFilterBackend, filters.SearchFilter)
-    search_fields = ('title', 'introduction', 'tag','file_type')
+    search_fields = ('title', 'introduction', 'tag', 'file_type')
+
+# 返回接口
+class ResourcesListView(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    素材列表页，模糊搜索功能
+    """
+    queryset = Resources.objects.all().order_by("-createtime")
+    # 返回序列化数据
+    serializer_class = ResourcesSerializer
+    # 分页配置
+    pagination_class = ResourcesPagination
+    # 模糊查询
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter)
+    search_fields = ('=tag','file_type')
