@@ -1,6 +1,6 @@
 from django.urls import path, include, re_path
 from . import views
-from resources.views_base import ResourcesListViewSet,ResourcesListView
+from resources.views_base import ResourcesListViewSet,ResourcesListView,ResourcesListViewCate,ResourcesListViewCateFormat
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
@@ -8,6 +8,8 @@ router = DefaultRouter()
 # 配置resource的URL
 router.register(r'search_resources', ResourcesListViewSet)
 router.register(r'list', ResourcesListView)
+router.register(r'list/cate', ResourcesListViewCate)
+router.register(r'list/cate/format', ResourcesListViewCateFormat)
 
 app_name = 'resources'
 urlpatterns = [

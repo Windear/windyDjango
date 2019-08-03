@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-1.9%" y="-3.8%" width="103.7%" height="110.8%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#F2EEA0" offset="0%"></stop>
+            <stop stop-color="#00F2A9" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="99.4715393%" id="linearGradient-3">
+            <stop stop-color="#4EBCFF" offset="0%"></stop>
+            <stop stop-color="#2A94FF" offset="99.8676215%"></stop>
+            <stop stop-color="#007EFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="iPhone-X" transform="translate(-20.000000, -20.000000)">
+            <g id="Group-5" filter="url(#filter-1)">
+                <g id="Group-6" transform="translate(20.000000, 20.000000)">
+                    <g id="Group" transform="translate(2.000000, 0.000000)">
+                        <g id="Group-2">
+                            <g id="Group-4">
+                                <g id="Group-3" transform="translate(10.000000, 21.250000)" fill="url(#linearGradient-2)">
+                                    <path d="M5.56350626,5.12820513 L5.56350626,16.7948718 C5.56350626,17.7153464 6.60870913,18.4615385 7.8980322,18.4615385 C9.18735527,18.4615385 10.2325581,17.7153464 10.2325581,16.7948718 L10.2325581,5.12820513 C10.2325581,4.20773055 9.18735527,3.46153846 7.8980322,3.46153846 C6.60870913,3.46153846 5.56350626,4.20773055 5.56350626,5.12820513 Z" id="Line-Copy-2"></path>
+                                    <path d="M9.05628142,3.76559275 L3.60905423,0.688669672 C2.48960831,0.0563389733 1.06355225,0.440792958 0.423868872,1.54737168 C-0.215814509,2.6539504 0.173109871,4.06361501 1.29255579,4.69594571 L6.73978298,7.77286879 C7.8592289,8.40519949 9.28528496,8.0207455 9.92496834,6.91416678 C10.5646517,5.80758806 10.1757273,4.39792345 9.05628142,3.76559275 Z" id="Path"></path>
+                                    <path d="M9.05628142,7.77286879 L14.5035086,4.69594571 C15.6229545,4.06361501 16.0118789,2.6539504 15.3721955,1.54737168 C14.7325121,0.440792958 13.3064561,0.0563389733 12.1870102,0.688669672 L6.73978298,3.76559275 C5.62033706,4.39792345 5.23141268,5.80758806 5.87109606,6.91416678 C6.51077944,8.0207455 7.9368355,8.40519949 9.05628142,7.77286879 Z" id="Path"></path>
+                                </g>
+                                <path d="M1.16581154,9.15532599 L16.6466885,0.309172145 C17.3680952,-0.103057382 18.2569048,-0.103057382 18.9783115,0.309172145 L34.4591885,9.15532599 C35.1805952,9.56755552 35.625,10.3293871 35.625,11.1538462 L35.625,28.8461538 C35.625,29.6706129 35.1805952,30.4324445 34.4591885,30.844674 L18.9783115,39.6908279 C18.2569048,40.1030574 17.3680952,40.1030574 16.6466885,39.6908279 L1.16581154,30.844674 C0.444404848,30.4324445 -2.48689958e-14,29.6706129 -2.48689958e-14,28.8461538 L-2.48689958e-14,11.1538462 C-2.48689958e-14,10.3293871 0.444404848,9.56755552 1.16581154,9.15532599 Z M4.66324615,27.5138071 L17.8125,35.0276141 L30.9617538,27.5138071 L30.9617538,12.4861929 L17.8125,4.97238586 L4.66324615,12.4861929 L4.66324615,27.5138071 Z" id="Line-Copy-2" fill="url(#linearGradient-3)" fill-rule="nonzero"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

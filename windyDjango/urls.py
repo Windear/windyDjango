@@ -34,9 +34,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('apps.users.urls', namespace='users')),
     path('design/', include('apps.designLists.urls', namespace='designLists')),
-
-    path('mydesign/', include('apps.myDesign.urls', namespace='myDesign')),
-
     path('resources/', include('apps.resources.urls', namespace='resources')),
     path('tools/', include('apps.macTools.urls', namespace='tools')),
     path('blog/', include('apps.blog.urls', namespace='blog')),
