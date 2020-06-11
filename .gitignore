@@ -1,7 +1,9 @@
-
-templates/.DS_Store
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.pyc
+.idea/
+.vscode/
 .DS_Store
-media
-static
-.pyc
-
