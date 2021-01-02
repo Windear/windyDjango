@@ -10,6 +10,7 @@ class CloudDriveSerializer(serializers.ModelSerializer):
 
 class ResourcesSerializer(serializers.ModelSerializer):
     # cloud_drive = CloudDriveSerializer(many=True)
+    picture = serializers.CharField()
 
     class Meta:
         model = Resources

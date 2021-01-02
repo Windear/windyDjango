@@ -100,8 +100,8 @@ DATABASES = {
         'NAME': 'windyPages',
         'USER': 'root',
         'PASSWORD': '891006',
-        'HOST': '47.95.203.96',
-        'PORT': '3306',
+        'HOST': '192.168.50.230',
+        'PORT': '3307',
         'OPTIONS': {'init_command': 'SET default_storage_engine=INNODB;'}
     }
 

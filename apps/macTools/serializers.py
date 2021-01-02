@@ -10,6 +10,7 @@ class HistoryVersionSerializer(serializers.ModelSerializer):
 
 class ToolsSerializer(serializers.ModelSerializer):
     tools_sys = HistoryVersionSerializer(many=True)
+    icon = serializers.CharField()
     #cate_type = serializers.ChoiceField(choices=Tools.CATEGORY_TYPE)
     class Meta:
         model = Tools

@@ -4,6 +4,7 @@ from .models import BlogArticle
 
 
 class BlogsSerializer(serializers.ModelSerializer):
+    picture = serializers.CharField()
 
     class Meta:
         model = BlogArticle

@@ -3,6 +3,7 @@ from .models import Collection_net, Friends_net
 
 
 class collectionNetSerializer(serializers.ModelSerializer):
+    icon = serializers.CharField()
     class Meta:
         model = Collection_net
         fields = ('id', 'icon', 'net_name', 'link_url')
