@@ -57,9 +57,9 @@ class Desgin(models.Model):
                            upload_settings={"imageMaxSize": 1204000, "catcherPathFormat": "blogImg/"},
                            settings={}, command=None, blank=True, )
     createman = models.CharField(max_length=100, verbose_name="创建人")
-    createtime = models.DateTimeField(auto_now=True, verbose_name="创建时间")
+    createtime = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     updateman = models.CharField(max_length=100, blank=True, null=True, verbose_name="修改人")
-    updatetime = models.DateTimeField(blank=True, null=True, verbose_name="修改时间")
+    updatetime = models.DateTimeField(auto_now=True, verbose_name="修改时间")
     deleteman = models.CharField(max_length=100, blank=True, null=True, verbose_name="删除人")
     deletetime = models.DateTimeField(blank=True, null=True, verbose_name="删除时间")
 

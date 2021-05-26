@@ -30,10 +30,11 @@ SECRET_KEY = '!qvxm%2cge-bu$9b^cl@st_v*i+k)x_wtmsb_3xr&+22x(08=0'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin"
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     #'werkzeug_debugger_runserver',
     #'django_extensions',
     'rest_framework',
@@ -70,9 +71,7 @@ ROOT_URLCONF = 'windyDjango.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-      # 'DIRS': [os.path.join(BASE_DIR, 'templates/dist')],
-        'DIRS': ['templates/dist'],
-
+        'DIRS': [os.path.join(BASE_DIR, 'templates/dist')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,15 +135,15 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'templates/dist'),
 ]
 # 上传文件的路径
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace("\\", "/")

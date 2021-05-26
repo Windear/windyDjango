@@ -19,6 +19,7 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.views.static import serve
 from designLists.uploads import upload_image
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from rest_framework.documentation import include_docs_urls
 
@@ -45,3 +46,4 @@ urlpatterns = [
     re_path(r'^ueditor/', include('DjangoUeditor.urls')),
 
 ]
+urlpatterns += staticfiles_urlpatterns()

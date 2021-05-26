@@ -70,9 +70,9 @@ class Tools(models.Model):
 
     active = models.BooleanField(default=True, verbose_name="是否显示", help_text="是否显示")
     create_id = models.CharField(max_length=100, verbose_name="创建人")
-    create_time = models.DateTimeField(auto_now=True, verbose_name="创建时间")
+    create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")
     edit_id = models.CharField(max_length=100, blank=True, null=True, verbose_name="修改人")
-    edit_time = models.DateTimeField(blank=True, null=True, verbose_name="修改时间")
+    edit_time = models.DateTimeField(auto_now=True, verbose_name="修改时间")
     delete_id = models.CharField(max_length=100, blank=True, null=True, verbose_name="删除人")
     delete_time = models.DateTimeField(blank=True, null=True, verbose_name="删除时间")
 
